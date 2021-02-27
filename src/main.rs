@@ -14,4 +14,7 @@ fn main() {
                       City {name: "NY".to_string(), population: 99, country: "USA".to_string()}];
 
     cities.sort_by_key(city_popuration_descending);
+
+    // ヘルパー関数の代わりにクロージャを使う
+    cities.sort_by_key(|city| -city.population);
 }
