@@ -17,4 +17,8 @@ fn main() {
 
     // ヘルパー関数の代わりにクロージャを使う
     cities.sort_by_key(|city| -city.population);
+
+    // 関数にも型があり、変数に格納できる
+    let fn_city_popuration_descending: fn(&City) -> i64 = city_popuration_descending;
+    cities.sort_by_key(fn_city_popuration_descending);
 }
