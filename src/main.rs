@@ -19,6 +19,8 @@ fn main() {
     cities.sort_by_key(|city| -city.population);
 
     // 関数にも型があり、変数に格納できる
+    // fn(&City) -> i64はfn型（関数のみ）
+    // Fn(&City) -> i64はFnトレイト（関数とクロージャの両方）
     let fn_city_popuration_descending: fn(&City) -> i64 = city_popuration_descending;
     cities.sort_by_key(fn_city_popuration_descending);
 }
