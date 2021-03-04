@@ -23,4 +23,10 @@ fn main() {
     // Fn(&City) -> i64はFnトレイト（関数とクロージャの両方）
     let fn_city_popuration_descending: fn(&City) -> i64 = city_popuration_descending;
     cities.sort_by_key(fn_city_popuration_descending);
+
+    let my_str = "hello".to_string();
+    let f = || drop(my_str);
+    f(); // メモリを解放してシステムに返却
+    // 2回目の呼び出しはコンパイラに検出され「value used here after move」とエラーになる
+    // f();
 }
