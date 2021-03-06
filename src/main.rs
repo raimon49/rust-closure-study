@@ -9,6 +9,11 @@ fn city_popuration_descending(city: &City) -> i64 {
     -city.population
 }
 
+fn call_twice<F>(closure: F) where F: Fn() {
+    closure();
+    closure();
+}
+
 fn main() {
     let mut cities = vec![City {name: "Tokyo".to_string(), population: 100, country: "Japan".to_string()},
                       City {name: "NY".to_string(), population: 99, country: "USA".to_string()}];
@@ -29,4 +34,8 @@ fn main() {
     f(); // メモリを解放してシステムに返却
     // 2回目の呼び出しはコンパイラに検出され「value used here after move」とエラーになる
     // f();
+
+    // error: this closure implements `FnOnce`, not `Fn`
+    // ジェネリック関数call_twiceはFnでなくFnOnceが実装されていると判断されコンパイルエラーになる
+    // call_twice(f);
 }
