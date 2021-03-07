@@ -9,7 +9,7 @@ fn city_popuration_descending(city: &City) -> i64 {
     -city.population
 }
 
-fn call_twice<F>(closure: F) where F: Fn() {
+fn call_twice<F>(mut closure: F) where F: FnMut() {
     closure();
     closure();
 }
@@ -38,4 +38,9 @@ fn main() {
     // error: this closure implements `FnOnce`, not `Fn`
     // ジェネリック関数call_twiceはFnでなくFnOnceが実装されていると判断されコンパイルエラーになる
     // call_twice(f);
+
+    // call_twiceの関数宣言でwhere制約をFnMut型にすると、データを更新するクロージャを呼び出してもコンパイルできる
+    let mut i = 0;
+    call_twice(|| i += 1);
+    assert_eq!(i, 2);
 }
