@@ -14,7 +14,6 @@ fn call_twice<F>(mut closure: F) where F: FnMut() {
     closure();
 }
 
-
 use std::collections::HashMap;
 struct Request {
     method: String,
