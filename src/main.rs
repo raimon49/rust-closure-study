@@ -32,6 +32,16 @@ struct BasicRouter<C> where C: Fn(&Request) -> Response {
     routes: HashMap<String, C>
 }
 
+impl<C> BasicRouter<C> where C: Fn(&Request) -> Response {
+    fn new() -> BasicRouter<C> {
+        BasicRouter { routes: HashMap::new() }
+    }
+
+    fn add_route(&mut self, url : &str, callback: C) {
+        self.routes.insert(url.to_string(), callback);
+    }
+}
+
 fn main() {
     let mut cities = vec![City {name: "Tokyo".to_string(), population: 100, country: "Japan".to_string()},
                       City {name: "NY".to_string(), population: 99, country: "USA".to_string()}];
