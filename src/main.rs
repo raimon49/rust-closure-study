@@ -14,6 +14,21 @@ fn call_twice<F>(mut closure: F) where F: FnMut() {
     closure();
 }
 
+
+use std::collections::HashMap;
+struct Request {
+    method: String,
+    url: String,
+    headers: HashMap<String, String>,
+    body: Vec<u8>
+}
+
+struct Response {
+    code: u32,
+    headers: HashMap<String, String>,
+    body: Vec<u8>
+}
+
 fn main() {
     let mut cities = vec![City {name: "Tokyo".to_string(), population: 100, country: "Japan".to_string()},
                       City {name: "NY".to_string(), population: 99, country: "USA".to_string()}];
