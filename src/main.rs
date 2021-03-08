@@ -28,6 +28,10 @@ struct Response {
     body: Vec<u8>
 }
 
+struct BasicRouter<C> where C: Fn(&Request) -> Response {
+    routes: HashMap<String, C>
+}
+
 fn main() {
     let mut cities = vec![City {name: "Tokyo".to_string(), population: 100, country: "Japan".to_string()},
                       City {name: "NY".to_string(), population: 99, country: "USA".to_string()}];
