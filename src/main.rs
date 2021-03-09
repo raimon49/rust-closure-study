@@ -78,7 +78,7 @@ fn main() {
     };
     call_twice(incr);
 
-    // 自分で定義したコールバック関数を登録できるルーターを作成
+    // 自分で定義したコールバック関数を引数として登録できるルーターを作成
     let mut router = BasicRouter::new();
     router.add_route("/", |_req| {
         Response { code: 200, headers: HashMap::new(), body: vec![100] }
