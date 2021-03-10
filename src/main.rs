@@ -83,4 +83,10 @@ fn main() {
     router.add_route("/", |_req| {
         Response { code: 200, headers: HashMap::new(), body: vec![100] }
     });
+
+    // 引数を型パラメータCにしていると、2つめのコールバックを登録するとエラーになる
+    // expected closure, found a different closure
+    router.add_route("/gcd", |_req| {
+        Response { code: 200, headers: HashMap::new(), body: vec![100] }
+    });
 }
